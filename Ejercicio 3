@@ -1,0 +1,41 @@
+def crear_arreglo(tamano):
+    arreglo = [0] * tamano  # Crear un arreglo de ceros de tamaño 
+    for i in range(tamano):
+        while True:
+            try:
+                num = int(input(f"Ingrese el elemento {i + 1}: "))
+                arreglo[i] = num  # Asignar el valor directamente en la posición
+                break  # Salir del bucle si la entrada es válida
+            except ValueError:
+                print("Error: Por favor, ingrese un número entero.")
+    return arreglo
+
+def promedio_arreglo(arreglo):
+    if len(arreglo) == 0:
+        return 0  # Evitar división por cero
+    suma = 0
+    for i in range(len(arreglo)):
+        suma += arreglo[i]
+    promedio = suma / len(arreglo)
+    return promedio
+
+def imprimir_arreglo(arreglo):
+    print("Arreglo:", end=" ")
+    for i in range(len(arreglo)):
+        print(arreglo[i], end=" ")
+    print()
+
+# Uso de las funciones
+while True:
+    try:
+        tamano = int(input("Ingrese el tamaño del arreglo: "))
+        if tamano <= 0:
+            raise ValueError("El tamaño debe ser un número entero positivo.")
+        break  # Salir del bucle si la entrada es válida
+    except ValueError as e:
+        print(f"Error: {e}")
+
+arreglo = crear_arreglo(tamano)
+imprimir_arreglo(arreglo)
+resultado = promedio_arreglo(arreglo)
+print("El promedio de los elementos del arreglo es:", resultado) 
