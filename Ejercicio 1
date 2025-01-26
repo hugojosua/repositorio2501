@@ -1,0 +1,37 @@
+def crear_arreglo(tamano):
+    arreglo = [0] * tamano  
+    for i in range(tamano):
+        while True:
+            try:
+                num = int(input(f"Ingrese el elemento {i + 1}: "))
+                arreglo[i] = num 
+                break  
+            except ValueError:
+                print("Error: Por favor, ingrese un número entero.")
+    return arreglo
+
+def suma_arreglo(arreglo):
+    suma = 0
+    for i in range(len(arreglo)):
+        suma += arreglo[i]
+    return suma
+
+def imprimir_arreglo(arreglo):
+    print("Arreglo:", end=" ")
+    for i in range(len(arreglo)):
+        print(arreglo[i], end=" ")
+    print()
+
+while True:
+    try:
+        tamano = int(input("Ingrese el tamaño del arreglo: "))
+        if tamano <= 0:
+            raise ValueError("El tamaño debe ser un número entero positivo.")
+        break  
+    except ValueError as e:
+        print(f"Error: {e}")
+
+arreglo = crear_arreglo(tamano)
+imprimir_arreglo(arreglo)
+resultado = suma_arreglo(arreglo)
+print("La suma de los elementos del arreglo es:", resultado)
